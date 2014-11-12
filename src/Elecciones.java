@@ -1,5 +1,6 @@
 import com.zubiri.elecciones.*;
 import java.util.Scanner;
+import java.io.*;
 
 public class Elecciones {
 
@@ -131,6 +132,9 @@ public class Elecciones {
 					break;
 				
 				case "c":
+
+
+
 					System.out.println("Partido");
 					String nomPartido=" ";
 					String siglas=" ";
@@ -165,6 +169,31 @@ public class Elecciones {
 					System.out.println("Ideologia: "+p1.getIdeologia());
 					System.out.println("Numero de afiliados: "+p1.getMiembros());
 					System.out.println("Candidato: "+p1.getCandidato());
+					
+
+					File fichero=new File("./listadoPartidos.txt");//llamar a la clase File para crear un fichero
+					System.out.println("Creando fichero con los nombres del partido...");
+					try{
+						if(fichero.createNewFile()){
+							System.out.println("Se ha creado el fichero")
+						}
+					}catch(IOException errorFichero){
+						errorFichero.println("Error: "+errorFichero);
+					}
+					
+					//escribir en el fichero
+					try{
+						System.out.println("Escribiendo en fichero...");
+						FileWriter escribirFichero=new FileWriter(fichero);
+						escribirFichero.append(p1.getNombre()+"\n");
+						escribirFichero.close();
+						System.out.println("Terminado")
+					}catch(IOException errorEscribir){
+						System.out.println("Error: "+errorEscribir);
+					}
+
+					//lectura del fichero utilizando un arraylist
+
 					break;
 				
 				case "d":
