@@ -12,14 +12,15 @@ public class Elecciones {
 		
 		do{
 			System.out.println();
-			System.out.println("Elige una opcion (a-g), o teclea 'X' para terminar:");
+			System.out.println("Elige una opcion:");
 			System.out.println("\ta) Habitante");
 			System.out.println("\tb) Ayuntamiento");
 			System.out.println("\tc) Partido");
 			System.out.println("\td) Inmueble");
 			System.out.println("\te) Espacio Publico");
 			System.out.println("\tf) Leer nombres de los partidos desde 'listadoPartidos.txt'");
-			System.out.println("\tg) ");
+			System.out.println("\tx) Salir");
+			
 			opcion=tecla.next();
 			switch (opcion){
 				case "a": 
@@ -269,20 +270,20 @@ public class Elecciones {
 					//fitxategiko lerroak irakurri
 						try{
 						
-								java.io.File fichero = new java.io.File(ruta,nombreFichero);
+								File fichero = new File(ruta,nombreFichero);
 								FileReader leerFichero=new FileReader(fichero);
 								BufferedReader bf=new BufferedReader(leerFichero);
 								ArrayList <String> lista=new ArrayList <String>();
 								String fila=bf.readLine();
 								while (fila!=null) {
-									lista.add(fila);
-									fila=bf.readLine();
+									lista.add(fila);//fitxategiko lerroaren edukia ArrayListean gehitu
+									fila=bf.readLine();// lerroa irakurri
 								}
 
-								//lerroak pantailaratzeko
+								//ArrayList-aren edukia pantailaratu
 								System.out.println("listadoPartidos.txt");
 								for(int i=0;i<lista.size();i++){
-									System.out.println((i+1)+". "+lista.get(i));
+									System.out.println("\t"+(i+1)+". "+lista.get(i));
 								}
 						}catch(FileNotFoundException fnfe){
 								System.out.println("Error: "+fnfe);
