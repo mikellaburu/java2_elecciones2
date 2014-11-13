@@ -1,7 +1,6 @@
-import com.zubiri.elecciones.*;
-import java.util.Scanner;
+import java.util.*;
 import java.io.*;
-
+import com.zubiri.elecciones.*;
 public class Elecciones {
 
 	public static void main(String[] args) {
@@ -132,9 +131,6 @@ public class Elecciones {
 					break;
 				
 				case "c":
-
-
-
 					System.out.println("Partido");
 					String nomPartido=" ";
 					String siglas=" ";
@@ -169,30 +165,7 @@ public class Elecciones {
 					System.out.println("Ideologia: "+p1.getIdeologia());
 					System.out.println("Numero de afiliados: "+p1.getMiembros());
 					System.out.println("Candidato: "+p1.getCandidato());
-					
 
-					File fichero=new File("./listadoPartidos.txt");//llamar a la clase File para crear un fichero
-					System.out.println("Creando fichero con los nombres del partido...");
-					try{
-						if(fichero.createNewFile()){
-							System.out.println("Se ha creado el fichero")
-						}
-					}catch(IOException errorFichero){
-						errorFichero.println("Error: "+errorFichero);
-					}
-					
-					//escribir en el fichero
-					try{
-						System.out.println("Escribiendo en fichero...");
-						FileWriter escribirFichero=new FileWriter(fichero);
-						escribirFichero.append(p1.getNombre()+"\n");
-						escribirFichero.close();
-						System.out.println("Terminado")
-					}catch(IOException errorEscribir){
-						System.out.println("Error: "+errorEscribir);
-					}
-
-					//lectura del fichero utilizando un arraylist
 
 					break;
 				
@@ -281,9 +254,44 @@ public class Elecciones {
 					System.out.println("Extension: "+e1.getExtension());
 					break;
 					
+				case "f":
+				   try{
+				   	System.out.println("Leer nombres de partidos desde el fichero");
+					String ruta="/home/zubiri/ProyectosJava/java2_elecciones2/";
+					String nombreFichero="listadoPartidos.txt";
+					//fitxategiko lerroak irakurri
+						try{
+						
+								java.io.File fichero = new java.io.File(ruta,nombreFichero);
+								FileReader leerFichero=new FileReader(fichero);
+								BufferedReader bf=new BufferedReader(leerFichero);
+								ArrayList <String> lista=new ArrayList <String>();
+								String fila=bf.readLine();
+								while (fila!=null) {
+									lista.add(fila);
+									fila=bf.readLine();
+								}
+
+								//lerroak pantailaratzeko
+								System.out.println("listadoPartidos.txt");
+								for(int i=0;i<lista.size();i++){
+									System.out.println((i+1)+". "+lista.get(i));
+								}
+						}catch(FileNotFoundException fnfe){
+								System.out.println("Error: "+fnfe);
+						}
+					}catch(IOException ioe){
+						System.out.println("Error "+ioe);
+					}
+					
+					break;
+ 					
+
 				case "x":
 					System.out.println("Salir");
 					break;
+
+
 					
 				default:
 					System.out.println("Opcion incorrecta, teclea otra opcion");
