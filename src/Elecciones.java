@@ -257,7 +257,7 @@ public class Elecciones {
 				case "f":
 				   try{
 				   	System.out.println("Leer nombres de partidos desde el fichero");
-					String ruta="/home/zubiri/ProyectosJava/java2_elecciones2/";
+					String ruta="/home/zubiri/ProyectosJava/java2_elecciones2/src/";
 					String nombreFichero="listadoPartidos.txt";
 					//fitxategiko lerroak irakurri
 						try{
