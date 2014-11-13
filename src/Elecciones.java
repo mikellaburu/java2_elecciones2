@@ -12,7 +12,14 @@ public class Elecciones {
 		
 		do{
 			System.out.println();
-			System.out.println("Elige una opcion (a-e), o teclea 'X' para terminar:");
+			System.out.println("Elige una opcion (a-g), o teclea 'X' para terminar:");
+			System.out.println("\ta) Habitante");
+			System.out.println("\tb) Ayuntamiento");
+			System.out.println("\tc) Partido");
+			System.out.println("\td) Inmueble");
+			System.out.println("\te) Espacio Publico");
+			System.out.println("\tf) Leer nombres de los partidos desde 'listadoPartidos.txt'");
+			System.out.println("\tg) ");
 			opcion=tecla.next();
 			switch (opcion){
 				case "a": 
